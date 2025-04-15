@@ -5,8 +5,16 @@ public class Livros {
     static ArrayList<String> livros = new ArrayList<String>();
     static Scanner scanner = new Scanner(System.in);
 
-    static String Operacao() {
-        return """
+    static void Lista() {
+        System.out.println("Livros arquivados: \n");
+        for (int i = 0; i < livros.size(); i++) {
+            System.out.print((i + 1) + ". " + livros.get(i) + "\n");
+        }
+    }
+
+    public static void main (String[] args) {
+        while (true) {
+            System.out.println("""
                 
                 ===================
                 Escolha a Operação:
@@ -18,24 +26,11 @@ public class Livros {
                 Sair [5]
                 
                 ===================
-                """;
-    }
-
-    static void Lista() {
-        System.out.println("Livros arquivados: \n");
-        for (int i = 0; i < livros.size(); i++) {
-            System.out.print((i + 1) + ". " + livros.get(i) + "\n");
-        }
-    }
-
-    static void Execucao() {
-        while (true) {
-            System.out.println(Operacao());
+                """);
             System.out.print("Digite um número: ");
-            int operacaoi = scanner.nextInt();
-            scanner.nextLine();
+            String operacaoi = scanner.nextLine();
 
-            if (operacaoi == 1) {
+            if (operacaoi == "1") {
                 System.out.print("Digite o nome do livro: ");
                 String livro = scanner.nextLine();
 
@@ -44,11 +39,11 @@ public class Livros {
 
                 livros.add((livro + " - " + autor));
             }
-            else if (operacaoi == 2) {
+            else if (operacaoi == "2") {
                 Lista();
             }
 
-           else if (operacaoi == 3) {
+           else if (operacaoi == "3") {
                Lista();
                System.out.print("Digite o número do livro que quer editar: ");
                int edicaonumero = scanner.nextInt();
@@ -64,7 +59,7 @@ public class Livros {
                System.out.print("Livro editado com sucesso!");
            }
 
-            else if (operacaoi == 4) {
+            else if (operacaoi == "4") {
                 Lista();
                 System.out.print("Digite o número do livro que quer remover: ");
                 int removernumero = scanner.nextInt();
@@ -73,7 +68,7 @@ public class Livros {
                 System.out.println("Livro removido com sucesso!");
             }
 
-            else if (operacaoi == 5){
+            else if (operacaoi.toLowerCase() == "sair"){
                 System.out.println("Operação finalizada, Obrigado por usar nosso sistema!");
                 break;
             }
@@ -81,9 +76,5 @@ public class Livros {
                 System.out.println("Número inválido, tente outra operação");
             }
         }
-    }
-
-    public static void main (String[] args) {
-        Execucao();
     }
 }
