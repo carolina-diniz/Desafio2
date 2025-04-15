@@ -1,0 +1,6 @@
+Operações
+
+Adicionar
+Listar
+Editar
+Remover
