@@ -1,6 +1,6 @@
 Operações
 
-Adicionar
+Adicionar ok
 Listar
 Editar
 Remover
