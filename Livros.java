@@ -6,7 +6,7 @@ public class Livros {
     static Scanner scanner = new Scanner(System.in);
 
     static String Operacao() {
-        String operacao = """
+        return """
                 
                 ===================
                 Escolha a Operação:
@@ -19,42 +19,59 @@ public class Livros {
                 
                 ===================
                 """;
-        return operacao;
     }
 
-    static String inputlinha() {
-        return scanner.nextLine();
-    }
-
-    static int inputint() {
-        return scanner.nextInt();
+    static void Lista() {
+        System.out.println("Livros arquivados: \n");
+        for (int i = 0; i < livros.size(); i++) {
+            System.out.print((i + 1) + ". " + livros.get(i) + "\n");
+        }
     }
 
     static void Execucao() {
         while (true) {
             System.out.println(Operacao());
-            System.out.println("Digite um número: ");
-            int operacaoi = inputint();
+            System.out.print("Digite um número: ");
+            int operacaoi = scanner.nextInt();
+            scanner.nextLine();
 
             if (operacaoi == 1) {
-                System.out.print("Digite nome do livro e autor: ");
-                String novolivro = inputlinha();
-                livros.add(novolivro);
+                System.out.print("Digite o nome do livro: ");
+                String livro = scanner.nextLine();
+
+                System.out.print("Digite o nome do autor: ");
+                String autor = scanner.nextLine();
+
+                livros.add((livro + " - " + autor));
             }
             else if (operacaoi == 2) {
-                for (int i = 0; i < livros.size(); i++) {
-                    System.out.print((i + 1) + ". " + livros.get(i) + "\n");
-                }
+                Lista();
             }
 
-            else if (operacaoi == 3) {
-                for (int i = 0; i < livros.size(); i++) {
-                    System.out.print((i + 1) + ". " + livros.get(i) + "\n");
-                }
-            }
+           else if (operacaoi == 3) {
+               Lista();
+               System.out.print("Digite o número do livro que quer editar: ");
+               int edicaonumero = scanner.nextInt();
+               scanner.nextLine();
 
-            // else if (operacaoi == 4) {
-            // }
+               System.out.print("Digite o nome do livro: ");
+               String edicaolivro = scanner.nextLine();
+
+               System.out.print("Digite o nome do autor: ");
+               String edicaoautor = scanner.nextLine();
+
+               livros.set((edicaonumero - 1), (edicaolivro + " - " + edicaoautor));
+               System.out.print("Livro editado com sucesso!");
+           }
+
+            else if (operacaoi == 4) {
+                Lista();
+                System.out.print("Digite o número do livro que quer remover: ");
+                int removernumero = scanner.nextInt();
+
+                livros.remove((removernumero - 1));
+                System.out.println("Livro removido com sucesso!");
+            }
 
             else if (operacaoi == 5){
                 System.out.println("Operação finalizada, Obrigado por usar nosso sistema!");
@@ -70,11 +87,3 @@ public class Livros {
         Execucao();
     }
 }
-
-//Lista e scanner fora do looping para não criar novos
-//Pode retornar o scanner
-//Lista pode fora dos métodos se colocar static na frente, assim como o scanner
-// só static torna o elemento global
-//Como tornar em um método a estrutura:
-// for (int i = 0; i < livros.size(); i++) {
-//     System.out.print((i + 1) + ". " + livros.get(i) + "\n");

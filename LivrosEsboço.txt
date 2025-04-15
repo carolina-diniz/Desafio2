@@ -4,3 +4,11 @@ Adicionar ok
 Listar
 Editar
 Remover
+
+//Lista e scanner fora do looping para não criar novos
+//Pode retornar o scanner
+//Lista pode fora dos métodos se colocar static na frente, assim como o scanner
+// só static torna o elemento global
+//Como tornar em um metodo essa estrutura:
+// for (int i = 0; i < livros.size(); i++) {
+//     System.out.print((i + 1) + ". " + livros.get(i) + "\n");
